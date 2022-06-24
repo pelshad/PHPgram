@@ -10,10 +10,12 @@ function getUrlPaths()
     return $getUrl !== "" ? explode('/', $getUrl) : "";
 }
 
+
 function getMethod()
 {
-    $headers = getallheaders();
-    return $headers['Accept'];
+    /*$headers = getallheaders();
+    return $headers['Accept'];*/
+    return $_SERVER['REQUEST_METHOD'];
 }
 function isGetOne()
 {

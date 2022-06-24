@@ -5,7 +5,7 @@
 <body class="h-full container-center">
     <div>
         <h1>로그인</h1>
-        <form action="@{signin}" method="post">
+        <form action="signin" method="post">
             <div><input type="email" name="email" placeholder="email" autofocus required></div>
             <div><input type="password" name="pw" placeholder="password" required></div>
             <div>
@@ -13,7 +13,7 @@
             </div>
         </form>
         <div>
-            <a href="signup">aaa회원가입</a>
+            <a href="signup">회원가입</a>
         </div>
     </div>
 </body>

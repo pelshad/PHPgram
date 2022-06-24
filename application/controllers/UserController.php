@@ -2,7 +2,7 @@
 
 namespace application\controllers;
 
-require_once "application/utils/UrlUtils.php";
+
 
 class UserController extends Controller
 {
@@ -11,8 +11,9 @@ class UserController extends Controller
         return "user/signin.php";
     }
 
+
     public function signup()
-    {   
+    {
         //강사님 테스트용 스위치문 
         /*$method = getMethod();
         switch($method) {
@@ -21,6 +22,20 @@ class UserController extends Controller
             case _POST:
                 return;
         }*/
-        return "user/signup.php";
+        /*print getMethod();*/
+        switch (getMethod()) {
+            case _GET:
+                return "user/signup.php";
+
+            case _POST:
+                $param = [
+                    "email" => $_POST["email"],
+                    "pw" => $_POST["pw"],
+                    "nm" => $_POST["nm"]
+                ];
+                $param["pw"] = password_hash($param["pw"], PASSWORD_BCRYPT);
+                $this->model->insUser($param);
+                return "redirect:signin";
+        }
     }
 }
